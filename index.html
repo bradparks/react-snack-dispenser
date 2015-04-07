@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="js/react-with-addons.js"></script>
+    <script src="js/JSXTransformer.js"></script>
+    <link  rel="stylesheet" type="text/css" href="css/style.css"></link>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo"></div> 
+      <h1>Snack Dispenser</h1>
+      <div id="dispenser"></div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/jsx" src="js/src/dispenser.js"/></script>
+    <script type="text/jsx" src="js/src/snack.js"/></script>
+    <script type="text/jsx">
+     
+
+      React.render( <Dispenser />,document.getElementById('dispenser'));
+    
+    </script>
+    
+  </body>
+</html>

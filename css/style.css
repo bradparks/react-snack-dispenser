@@ -1,0 +1,93 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+button{
+	border:none;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: "Lato", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 400;
+}
+h1{
+	font-size: 3.45em;
+	margin:30px;
+	color:white;
+	text-align: center;
+}
+body,input,textarea,button{
+	font-family: "Lato", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	background:#425B71;
+	color:white;
+}
+
+.container{
+	width:1152px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+.logo{
+	margin-top:50px;
+	text-align: center;
+	width: 200px;
+	height: 50px;
+	background-image: url("https://argo.io/images/logo_white_200x50.min.svg");
+	background-repeat: no-repeat;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.btn{
+	display: inline-block;
+	text-align: center;
+	width: 12.5em;
+	height: 3em;
+	line-height: 3em;
+	margin: 0 auto 1em;
+	font-size: 1.125em;
+	color: white;
+	text-decoration: none;
+	background: #61D1AF;
+	border-radius: .25em;
+	box-shadow: 0 0.2em 0.25em rgba(0, 0, 0, 0.25);
+	transition: background .3s ease;
+	cursor: pointer;
+	font-weight:light;
+}
+.btn.purple{
+	background:#A776A7;
+}
+
+
+#snacks-outer-container{
+	width:100%;
+	height: 200px;
+}
+#snacks-inner-container{
+	color: #ffffff;
+    float: left;
+    font-size: 70px;
+    font-weight: 300;
+    line-height: 80px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    padding: 30px 0px;
+}
+#snacks{
+	width:100%;
+	height: 4f67px;
+	overflow: hidden;
+	display: inline-block;
+	text-align: center;
+}
+#snacks li{
+	text-transform: uppercase;
+}
+
+
+ 
