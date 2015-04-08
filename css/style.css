@@ -124,7 +124,7 @@ body,input,textarea,button{
 	border-radius:1em;
 	margin-left:auto;
 	margin-right:auto;
-	font-size:2em;
+	font-size:1.5em;
 	text-align:left;
 	padding:20px;
 	margin:10px 10px 0px;
@@ -133,10 +133,30 @@ body,input,textarea,button{
 
 	
 }
+.stats li, .stash li{
+	height:1.7em;
+
+}
 .stats h2,.stash h2{
 	text-align:center;
-	margin-bottom:10px;
+	height:80px;
 	font-weight:bold;
+}
+.stats .count, .stash .count{
+	display: inline-block;
+	background: white;
+	border-radius: .25em;
+	padding: .125em .25em;
+	color: #58BFC7;
+	font-weight: 400;
+	float:right;
+	margin-top:-3px;
+}
+.results h3{
+	border-radius:1em;
+	color:#eF9595;
+	background:white;
+	padding:15px;
 }
 .clear{
 	clear:both;

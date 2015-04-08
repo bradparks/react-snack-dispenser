@@ -79,7 +79,7 @@ var Dispenser = React.createClass({
         	    			<button className="btn" onClick={this.shuffleSnacks} >Gimme a Snack!</button>
         	    		</div>
         	    		
-                  <Results message={this.state.snackMessage} showResults={this.state.selectedSnack == 1}>
+                  <Results message={this.state.snackMessage}>
                       <div className="buttons" style={{display:takeItOrLeaveItButtons}}>
                         <button className="btn purple" onClick={this.takeSnack}>Take it</button>
                         <div>OR</div>
