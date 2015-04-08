@@ -118,7 +118,7 @@ body,input,textarea,button{
 .stats,.stash{
 	
 	width:200px;
-	height:auto;
+	height:230px;
 	background: #58BFC7;
 	border:2px solid white;
 	border-radius:1em;
@@ -130,6 +130,7 @@ body,input,textarea,button{
 	margin:10px 10px 0px;
 	font-weight:300;
 	float:left;
+
 	
 }
 .stats h2,.stash h2{

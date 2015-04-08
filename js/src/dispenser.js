@@ -28,7 +28,7 @@ var Dispenser = React.createClass({
           this.setState({displayedSnack : displayedSnackInteger});
         }
         
-    }.bind(this),750);  
+    }.bind(this),500);  
   	
   },
   displaySnackMessage : function(){
