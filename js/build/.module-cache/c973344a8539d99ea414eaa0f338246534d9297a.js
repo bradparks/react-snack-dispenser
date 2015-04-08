@@ -1,4 +1,4 @@
-var Dispenser = React.createClass({
+var Dispenser = React.createClass({displayName: "Dispenser",
   getInitialState : function(){
   	return {"snacks" : [{"type": "Doritos", "count" : this.generateRandomNumber(1,5), "stash_count":0, "imgSrc" : 'images/doritos.gif'},
        		{"type": "Reeses", 	 "count" : this.generateRandomNumber(1,5), "stash_count":0,"imgSrc" : 'images/reeses2.png'},
@@ -63,37 +63,35 @@ var Dispenser = React.createClass({
         snackOpacity = 1;
       }
       return (
-        <Snack key={snack.type} data={snack}>
-          <img style={{opacity : snackOpacity}} src={snack.imgSrc}/>
-        </Snack>
+        React.createElement(Snack, {key: snack.type, data: snack}, 
+          React.createElement("img", {style: {opacity : snackOpacity}, src: snack.imgSrc})
+        )
           
       );
     });
-    return <div>
+    return React.createElement("div", null, 
 
-      				<div className="dispenser-container">
-    			    		<ul id="snacks" className="snacks" ref="snackOptions">
-    			    			{snacks}
-    			    		</ul>
-        	    		<div className="buttons" style={{display:selectSnackButton}}>
-        	    			<button className="btn" onClick={this.shuffleSnacks} >Gimme a Snack!</button>
-        	    		</div>
+      				React.createElement("div", {className: "dispenser-container"}, 
+    			    		React.createElement("ul", {id: "snacks", className: "snacks", ref: "snackOptions"}, 
+    			    			snacks
+    			    		), 
+        	    		React.createElement("div", {className: "buttons", style: {display:selectSnackButton}}, 
+        	    			React.createElement("button", {className: "btn", onClick: this.shuffleSnacks}, "Gimme a Snack!")
+        	    		), 
         	    		
-                  <Results message={this.state.snackMessage}>
-                      <div className="buttons" style={{display:takeItOrLeaveItButtons}}>
-                        <button className="btn purple" onClick={this.takeSnack}>Take it</button>
-                        <div>OR</div>
-                        <button className="btn" onClick={this.reset}>Leave it</button>
-                      </div>
-                  </Results>
-                </div>
-                <div className="data-container">
-                   <Stats snacks={this.state.snacks}/>
-                   <Stash snacks={this.state.snacks}/>
-                   <div className="clear"></div>
-               </div>
-    	     </div>;
+                  React.createElement(Results, {message: this.state.snackMessage}, 
+                      React.createElement("div", {className: "buttons", style: {display:takeItOrLeaveItButtons}}, 
+                        React.createElement("button", {className: "btn purple", onClick: this.takeSnack}, "Take it"), 
+                        React.createElement("div", null, "OR"), 
+                        React.createElement("button", {className: "btn", onClick: this.reset}, "Leave it")
+                      )
+                  )
+                ), 
+                React.createElement("div", {className: "data-container"}, 
+                   React.createElement(Stats, {snacks: this.state.snacks}), 
+                   React.createElement(Stash, {snacks: this.state.snacks}), 
+                   React.createElement("div", {className: "clear"})
+               )
+    	     );
   }
 });
-
-React.render( <Dispenser />,document.getElementById('dispenser'));

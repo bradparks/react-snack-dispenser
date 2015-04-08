@@ -26,6 +26,7 @@ body,input,textarea,button{
 	width:1152px;
 	margin-left:auto;
 	margin-right:auto;
+	padding-bottom:15px;
 }
 @media (max-width: 1151px) {
 	.container {width: 900px;}

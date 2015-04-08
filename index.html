@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Argo Snack Dispenser</title>
     <script src="js/react-with-addons.js"></script>
     <script src="js/JSXTransformer.js"></script>
     <link  rel="stylesheet" type="text/css" href="css/style.css"></link>
@@ -11,18 +12,12 @@
       <h1>Snack Dispenser</h1>
       <div id="dispenser"></div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script type="text/jsx" src="js/src/dispenser.js"/></script>
-    <script type="text/jsx" src="js/src/snack.js"/></script>
-    <script type="text/jsx" src="js/src/results.js"/></script>
-    <script type="text/jsx" src="js/src/stats.js"/></script>
-    <script type="text/jsx" src="js/src/stash.js"/></script>
-    <script type="text/jsx">
-     
-
-      React.render( <Dispenser />,document.getElementById('dispenser'));
+    <script src="js/build/snack.js"/></script>
+    <script src="js/build/results.js"/></script>
+    <script src="js/build/stats.js"/></script>
+    <script src="js/build/stash.js"/></script>
+    <script src="js/build/dispenser.js"/></script>
     
-    </script>
     
   </body>
 </html>
