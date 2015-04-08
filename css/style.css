@@ -27,8 +27,16 @@ body,input,textarea,button{
 	margin-left:auto;
 	margin-right:auto;
 }
-
-
+@media (max-width: 1151px) {
+	.container {width: 900px;}
+}
+@media (max-width: 992px) {
+	.container {width: 769px;}
+	
+}
+@media (max-width: 768px) {
+	.container {width: auto;}
+}
 .logo{
 	margin-top:50px;
 	text-align: center;
@@ -46,7 +54,7 @@ body,input,textarea,button{
 	width: 12.5em;
 	height: 3em;
 	line-height: 3em;
-	margin: 0 auto 1em;
+	margin:.5em auto .5em;
 	font-size: 1.125em;
 	color: white;
 	text-decoration: none;
@@ -61,33 +69,75 @@ body,input,textarea,button{
 	background:#A776A7;
 }
 
-
-#snacks-outer-container{
-	width:100%;
-	height: 200px;
-}
-#snacks-inner-container{
-	color: #ffffff;
-    float: left;
-    font-size: 70px;
-    font-weight: 300;
-    line-height: 80px;
-    margin-top: 2px;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 100%;
-    padding: 30px 0px;
-}
 #snacks{
 	width:100%;
-	height: 4f67px;
+	height: 300px;
 	overflow: hidden;
-	display: inline-block;
+	visibility:hidden;
 	text-align: center;
+	color:white;
+	font-size:2em;
+	position:relative;
 }
 #snacks li{
 	text-transform: uppercase;
+	font-size:.5em;
 }
-
-
+#snacks img{
+	max-width:300px;
+	max-height:300px;
+	left:20%;
+	position:absolute;
+	opacity:0;
+	width:auto;
+	height:auto;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	 -webkit-transition: opacity .4s; /* Safari */
+    transition: opacity .4s;
+}
+.dispenser-container{
+	width:500px;
+	height:auto;
+	background: #B3E6DE;
+	border:2px solid white;
+	border-radius:2em;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:2em;
+	text-align:center;
+	padding:20px;
+	
+}
+.data-container{
+	width:530px;
+	height:auto;
+	margin:0px auto 0px;
+}
+.stats,.stash{
+	
+	width:200px;
+	height:auto;
+	background: #58BFC7;
+	border:2px solid white;
+	border-radius:1em;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:2em;
+	text-align:left;
+	padding:20px;
+	margin:10px 10px 0px;
+	font-weight:300;
+	float:left;
+	
+}
+.stats h2,.stash h2{
+	text-align:center;
+	margin-bottom:10px;
+	font-weight:bold;
+}
+.clear{
+	clear:both;
+}
  

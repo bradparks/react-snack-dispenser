@@ -1,9 +1,9 @@
 var Dispenser = React.createClass({
   getInitialState : function(){
-  	return {"snacks" : [{"type": "Pretzels", "count" : this.generateRandomNumber(1,5), "imgSrc" : 'images/pretzels.jpg', "display" : "none"},
-       		{"type": "Reeses", 	 "count" : this.generateRandomNumber(1,5), "imgSrc" : 'images/reeses.gif', "display" : "none"},
-       		{"type": "Dr. Pepper", "count" : this.generateRandomNumber(1,5), "imgSrc" : 'images/drpepper.png', "display" : "none"},
-       		{"type": "Apples", 	 "count" : this.generateRandomNumber(1,5), "imgSrc" : 'images/apple.jpg', "display" : "none"}
+  	return {"snacks" : [{"type": "Doritos", "count" : this.generateRandomNumber(1,5), "stash_count":0, "imgSrc" : 'images/doritos.gif'},
+       		{"type": "Reeses", 	 "count" : this.generateRandomNumber(1,5), "stash_count":0,"imgSrc" : 'images/reeses2.png'},
+       		{"type": "Dr. Pepper", "count" : this.generateRandomNumber(1,5), "stash_count":0,"imgSrc" : 'images/drpepper2.png'},
+       		{"type": "Apples", 	 "count" : this.generateRandomNumber(1,5), "stash_count":0,"imgSrc" : 'images/apple2.png'}
        	],"selectedSnack" : -1,"displayedSnack": -1,"snackMessage" : ""};
   },
  	
@@ -11,29 +11,13 @@ var Dispenser = React.createClass({
   		var randomNumber = Math.floor((Math.random() * count) + startNumber);
   		return randomNumber;
   },
-  selectRandomSnack: function(){
-    
-    this.shuffleSnacks();
-    
-  	/*var displaySnackInteger = this.state.displayedSnack;
-  	var currentSnacks = this.state.snacks;
-    if(displaySnackInteger != -1){
-        if(currentSnacks[displaySnackInteger].count == 0){
-        alert('you lose. No more '+currentSnacks[selectedSnackInteger].type+' left.');
-      }else{
-        this.setState({selectedSnack : displaySnackInteger});
-      }
-    }*/
-  	
- 	
-  },
-
+  
   /* Visually shuffle the snacks (slot machine effect)*/
   shuffleSnacks : function(){
     this.reset();
     /* How many times to shuffle through the snacks */
     var shuffleStart = 0;
-    var shuffleEnd = this.generateRandomNumber(1,20);
+    var shuffleEnd = this.generateRandomNumber(10,20);
     
     var intervalId = setInterval(function(){
         if (++shuffleStart === shuffleEnd) {
@@ -41,12 +25,10 @@ var Dispenser = React.createClass({
           this.displaySnackMessage();
         }else{
           var displayedSnackInteger = this.generateRandomNumber(0,this.state.snacks.length);
-          this.setState({displayedSnack : displayedSnackInteger},function(){
-            console.log('finished setting displayed snack state');
-          });
+          this.setState({displayedSnack : displayedSnackInteger});
         }
         
-    }.bind(this),200);  
+    }.bind(this),750);  
   	
   },
   displaySnackMessage : function(){
@@ -61,7 +43,8 @@ var Dispenser = React.createClass({
   takeSnack : function() {
 	  var currentSnacks = this.state.snacks;
   	var selectedSnack = this.state.selectedSnack;
-  	currentSnacks[selectedSnack].count--; 	
+  	currentSnacks[selectedSnack].count--;
+    currentSnacks[selectedSnack].stash_count++; 	
   	this.setState({snacks : currentSnacks},function(){
         this.reset();
     });
@@ -71,37 +54,44 @@ var Dispenser = React.createClass({
   },
   render: function() {
   	var selectSnackButton = this.state.selectedSnack == -1 ? "block" : "none";
-  	var takeItOrLeaveItButtons = this.state.selectedSnack == -1 ? "none" : "block";
+    var takeItOrLeaveItButtons = this.state.selectedSnack == -1 ? "none" : "block";
+    var displaySnacks = this.state.displayedSnack != -1 ? "visible" : "hidden";
     var displayedSnackInteger = this.state.displayedSnack;
-	 var snacks = this.state.snacks.map(function (snack,index) {
-      if(displayedSnackInteger == index){
-        snack.display = "list-item";
-      }else{
-        snack.display = "none";
+	  var snacks = this.state.snacks.map(function (snack,index) {
+      var snackOpacity = 0;
+      if(displayedSnackInteger == index){   
+        snackOpacity = 1;
       }
       return (
-        <Snack key={snack.type} ref={snack.type} data={snack}/>
+        <Snack key={snack.type} data={snack}>
+          <img style={{opacity : snackOpacity}} src={snack.imgSrc}/>
+        </Snack>
           
       );
     });
     return <div>
 
-  				<div id="snacks-outer-container">
-  					<div id="snacks-inner-container">
-  			    		<ul id="snacks" className="snacks" ref="snackOptions">
-  			    			{snacks}
-  			    		</ul>
-  		    		</div>
-  	    		</div>
-            <h2>{this.state.snackMessage}</h2>
-  	    		<div className="buttons" style={{display:selectSnackButton}}>
-  	    			<button className="btn" onClick={this.shuffleSnacks} >Gimme a Snack!</button>
-  	    		</div>
-  	    		<div className="buttons" style={{display:takeItOrLeaveItButtons}}>
-  		    		<button className="btn purple" onClick={this.takeSnack}>Take it</button>
-  		    		&nbsp;OR&nbsp;
-  		    		<button className="btn" onClick={this.reset}>Leave it</button>
-  	    		</div>
-    	  </div>;
+      				<div className="dispenser-container">
+    			    		<ul id="snacks" style={{visibility : displaySnacks}} className="snacks" ref="snackOptions">
+    			    			{snacks}
+    			    		</ul>
+        	    		<div className="buttons" style={{display:selectSnackButton}}>
+        	    			<button className="btn" onClick={this.shuffleSnacks} >Gimme a Snack!</button>
+        	    		</div>
+        	    		
+                  <Results message={this.state.snackMessage} showResults={this.state.selectedSnack == 1}>
+                      <div className="buttons" style={{display:takeItOrLeaveItButtons}}>
+                        <button className="btn purple" onClick={this.takeSnack}>Take it</button>
+                        <div>OR</div>
+                        <button className="btn" onClick={this.reset}>Leave it</button>
+                      </div>
+                  </Results>
+                </div>
+                <div className="data-container">
+                   <Stats snacks={this.state.snacks}/>
+                   <Stash snacks={this.state.snacks}/>
+                   <div className="clear"></div>
+               </div>
+    	     </div>;
   }
 });
