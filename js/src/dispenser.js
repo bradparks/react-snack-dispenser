@@ -17,7 +17,7 @@ var Dispenser = React.createClass({
     this.reset();
     /* How many times to shuffle through the snacks */
     var shuffleStart = 0;
-    var shuffleEnd = this.generateRandomNumber(10,20);
+    var shuffleEnd = this.generateRandomNumber(5,10);
     
     var intervalId = setInterval(function(){
         if (++shuffleStart === shuffleEnd) {
@@ -35,7 +35,7 @@ var Dispenser = React.createClass({
     var displaySnackIndex = this.state.displayedSnack;
     var currentSnacks = this.state.snacks;
     if(currentSnacks[displaySnackIndex].count == 0){
-        this.setState({snackMessage : "Sorry, try again. The snack machine is out of "+currentSnacks[displaySnackIndex].type+"."});
+        this.setState({snackMessage : "Sorry, try again. The snack dispenser is out of "+currentSnacks[displaySnackIndex].type+"."});
     }else{
         this.setState({selectedSnack: displaySnackIndex,snackMessage : "Would you like "+currentSnacks[displaySnackIndex].type+"?"});
     }
@@ -53,13 +53,13 @@ var Dispenser = React.createClass({
   	this.setState({snackMessage:"",displayedSnack : -1,selectedSnack: -1})
   },
   render: function() {
+    var displayedSnackIndex = this.state.displayedSnack;
   	var selectSnackButton = this.state.selectedSnack == -1 ? "block" : "none";
     var takeItOrLeaveItButtons = this.state.selectedSnack == -1 ? "none" : "block";
-    var displaySnacks = this.state.displayedSnack != -1 ? "visible" : "hidden";
-    var displayedSnackInteger = this.state.displayedSnack;
+     
 	  var snacks = this.state.snacks.map(function (snack,index) {
       var snackOpacity = 0;
-      if(displayedSnackInteger == index){   
+      if(displayedSnackIndex == index){   
         snackOpacity = 1;
       }
       return (
@@ -72,7 +72,7 @@ var Dispenser = React.createClass({
     return <div>
 
       				<div className="dispenser-container">
-    			    		<ul id="snacks" style={{visibility : displaySnacks}} className="snacks" ref="snackOptions">
+    			    		<ul id="snacks" className="snacks" ref="snackOptions">
     			    			{snacks}
     			    		</ul>
         	    		<div className="buttons" style={{display:selectSnackButton}}>
