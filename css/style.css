@@ -38,16 +38,7 @@ body,input,textarea,button{
 @media (max-width: 768px) {
 	.container {width: auto;}
 }
-.logo{
-	margin-top:50px;
-	text-align: center;
-	width: 200px;
-	height: 50px;
-	background-image: url("https://argo.io/images/logo_white_200x50.min.svg");
-	background-repeat: no-repeat;
-	margin-left:auto;
-	margin-right:auto;
-}
+
 
 .btn{
 	display: inline-block;
